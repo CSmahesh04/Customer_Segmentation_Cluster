@@ -1,3 +1,3 @@
-# Project_Cluster
+ <h1 align='center'>CUSTOMER SEGMENTATION USING CLUSTERING TECHNIQUES</h1> 
 
-## ReadME will be updated in a couple of weeks. Thanks!
+
