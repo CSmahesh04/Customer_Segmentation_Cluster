@@ -42,19 +42,19 @@ Since there are more than 50% of the values missing in the columns Addressline2 
  **PICS OF ALL THE BAR GRPAHS**
  <h5 align="center">Categorical Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar1.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar1.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar2.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar2.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar3.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar3.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar4.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar4.png" width=600>
 </p>
 
  All the above columns are categorical variables. We need to replace the string values with one hot encoded values. Do achieve this I utilized the _get_dummies_ module in **Pandas**. This increased the total number of columns from 9 to 39. The **PRODUCTCODE** column has 109 unique values, so using the same method will give an additional 108 columns which is bad, we need to avoid the curse of dimensionality. Below is the dataset after converting columns into dummies:
@@ -68,34 +68,34 @@ Since there are more than 50% of the values missing in the columns Addressline2 
  
  <h5 align="center">Line Plot of Sales V Date</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/line.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/line.png" width=600>
 </p>
  
 To analyze the frequency distribution of the dataset I plotted the below distplots for the following columns: **QUANTITYORDERED**, **SALES**, **PRICEEACH**, **MONTH_ID**, **MSRP**, **PRODUCTCODE**. 
 
 <h5 align="center">Distplots of Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist1.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist1.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist2.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist2.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist3.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist3.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist4.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist4.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist5.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist5.png" width=600>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist6.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist6.png" width=600>
 </p>
 
 Next I use my favourite function in **Seaborn**, the _pairplot_ function. This plots all the columns against each other and it is easy to see any hidden pattern missed from just looking at heatmaps and correlation tables. From the below table I realized that:
@@ -150,7 +150,7 @@ To better understand how the clusters are formed, I will the 5 clusters in a 3-D
 
 <h5 align="center">3D Plot of Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans.png" width=600>
 </p>
 
 ## Using AutoEncoder
@@ -185,13 +185,13 @@ I used PCA to again decrease the total dimensions of the data so it is easier to
 
 <h5 align="center">3D Plot of Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans_auto.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans_auto.png" width=600>
 </p>
 
 Below is the picture of clusters by BIRCH:
 
 <h5 align="center">3D Plot of Clusters: BIRCH</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/BIRCH.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/BIRCH.png" width=600>
 </p>
  
