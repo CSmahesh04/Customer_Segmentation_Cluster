@@ -26,76 +26,86 @@ The Dataset contains extensive information about customers from a retail analyti
  
  ## About the Data
  
+ <details>
+<a name="Technologies_Used"></a>
+<summary>Show/Hide</summary>
+<br>
+ 
 The dataset contains 2,823 rows and 25 columns. The 25 columns contain order information such as order number, price, order date and status of the order etc. It also contains information about the customer such as the address, state, country, phone number etc. Due to such a wide variety of columns the dataset contains many datatypes. I converted the order date from the _object_ datatype to _datetime64_ datatype using a pandas module. One good practice is to actually take a look at the dataset, this is called a sanity check. Below you can see all the datatypes and the total number of null values in each column.
  
  <h5 align="center">Datatypes and Number of Null Values in Dataset</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/Capture.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/Capture.PNG" width=400 height=500>
 </p>
  
 Since there are more than 50% of the values missing in the columns Addressline2 and State, it is best if we drop these columns. Along with these, columns such as Addressline1, Phone, Contact First Name, Contact last Name, Customer Name, Postal Code and Order Number are not useful in segmenting customers based on their features. So we drop these columns as well. Now we have a clean dataset which contains useful features for finding a pattern among customers.
- 
+</details>
+
  ## EDA and Cleaning
+ 
+ <details>
+<a name="Technologies_Used"></a>
+<summary>Show/Hide</summary>
+<br>
  
  The territory column interested me. The unique values of that column are EMEA, Japan and APAC, along with null values. Upon further inspection I found out that all null value rows in column Territory are orders from countries USA or Canada. So I replaced the null values with CUSA, the Canada-US trade region. With this there are no null values in our dataset. I then use the **Plotly** library to make interactive bar graphs for a few columns to see the distribution among them. We can see that the **Status** column is heavily disproportionate with the 'Shipped" status having 20X more entries than all the rest combined. Such imbalanced features can ruin the performance of a model, so the **Status** column is dropped. Below are the bar graphs:
  
- **PICS OF ALL THE BAR GRPAHS**
  <h5 align="center">Categorical Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar1.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar1.png" width=900 height=550>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar2.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar2.png" width=900 height=550>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar3.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar3.png" width=900 height=550>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar4.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar4.png" width=900 height=550>
 </p>
 
  All the above columns are categorical variables. We need to replace the string values with one hot encoded values. Do achieve this I utilized the _get_dummies_ module in **Pandas**. This increased the total number of columns from 9 to 39. The **PRODUCTCODE** column has 109 unique values, so using the same method will give an additional 108 columns which is bad, we need to avoid the curse of dimensionality. Below is the dataset after converting columns into dummies:
  
  <h5 align="center">Dataset with Dummified Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dataset_dummy.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dataset_dummy.PNG" width=900, height=500>
 </p>
  
  Next I wanted to check how the sales were divided based on the column **ORDERDATE**. From the below line graph it can be seen that most of the sales happen in the months of November and December. This information is more easily available in column **MONTH_ID**. So I will be dropping the **ORDERDATE** column so as to decrease the risk of collinearity. Also the column **QTR_ID** seems to contain redundant information. So it will also be dropped.
  
  <h5 align="center">Line Plot of Sales V Date</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/line.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/line.png" width=750 height= 500>
 </p>
  
 To analyze the frequency distribution of the dataset I plotted the below distplots for the following columns: **QUANTITYORDERED**, **SALES**, **PRICEEACH**, **MONTH_ID**, **MSRP**, **PRODUCTCODE**. 
 
 <h5 align="center">Distplots of Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist1.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist1.png" width=800 height=650>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist2.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist2.png" width=800 height=650>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist3.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist3.png" width=800 height=650>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist4.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist4.png" width=800 height=650>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist5.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist5.png" width=800 height=650>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist6.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/dist6.png" width=800 height=650>
 </p>
 
 Next I use my favourite function in **Seaborn**, the _pairplot_ function. This plots all the columns against each other and it is easy to see any hidden pattern missed from just looking at heatmaps and correlation tables. From the below table I realized that:
@@ -106,11 +116,17 @@ Next I use my favourite function in **Seaborn**, the _pairplot_ function. This p
 
 <h5 align="center">Pairplot of Features</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/pairplot.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/pairplot.PNG" width=800 height=700>
 </p>
+</details>
 
 ## Clustering Model
 
+<details>
+<a name="Technologies_Used"></a>
+<summary>Show/Hide</summary>
+<br>
+ 
 KMeans clustering is one of the best clustering algorithms around. It uses the euclidean distances between the data points among the feature space to cluster data points accordingly. The only hyperparameter to set is the number of cluster parameters. This can be found by running a for loop to get the score of each cluster group and using the elbow method to determine the optimal number clusters. Below we can see that the elbow isn't very clear, but around cluster 5 seems to be where it is.
 
 <h5 align="center">Elbow Plot of K Means</h5>
@@ -128,33 +144,38 @@ So we run the KMeans algorithm again to segment the full dataset into 5 clusters
 
 <h5 align="center">Table of Scaler Inverse Cluster Centres</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/centres1.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/centres1.PNG" width=930 height=400>
 </p>
 
 The above inferences can be made from the table above. The graphs below show the different columns in the dataset with respect to the cluster they are in. They match up with the inferences up above.
 
 <h5 align="center">Features According to Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col1.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col1.PNG" width=950>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col2.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col2.PNG" width=950>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col3.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/col3.PNG" width=950>
 </p>
 
 To better understand how the clusters are formed, I will the 5 clusters in a 3-D space using **Plotly**. But since there are 39 feature columns in our dataset, it is not possible to visualize them in just a 3-D space without dimensionality reduction. So, I utilized the Principal Component Analysis (PCA) to reduce the dimensions from the original 39 to just 3. PCA is an unsupervised machine learning algorithm which reduces the dimensions of the data given but tries to keep the information unchanged. It does this by finding a new set of features called components which contain most of the information in the big feature space. The graph below is actually interactive thanks to **Plotly**, but README.md only allows static images.
 
 <h5 align="center">3D Plot of Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans.png" width=1200 height=400>
 </p>
+</details>
 
 ## Using AutoEncoder
-
+<details>
+<a name="Technologies_Used"></a>
+<summary>Show/Hide</summary>
+<br>
+ 
 I utilized Autoencoders to reduce the total number of features, while retaining the information, before applying a clustering algorithm. This led to a better performance by both K-Means and BIRCH clustering algorithms. Autoencoders do this by adding a bottleneck in the network, so this forces the network to compress whatever the input is given to it. This led to a simpler elbow method where the optimal number of clusters seem to be 3 not 5. This can be seen below:
 
 <h5 align="center">Elbow Plot of K Means after Encoding</h5>
@@ -170,28 +191,28 @@ Applying the KMeans algorithm again on the reduced dataset we can see that the m
 
 <h5 align="center">Features According to Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col1.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col1.PNG" width=950>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col2.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col2.PNG" width=950>
 </p>
 
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col3.PNG" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/2col3.PNG" width=950>
 </p>
 
 I used PCA to again decrease the total dimensions of the data so it is easier to visualize. Below is the image of clusters by Kmeans:
 
 <h5 align="center">3D Plot of Clusters</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans_auto.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/kmeans_auto.png" width=1200 height=450>
 </p>
 
 Below is the picture of clusters by BIRCH:
 
 <h5 align="center">3D Plot of Clusters: BIRCH</h5>
 <p align="center">
-  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/BIRCH.png" width=600>
+  <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/BIRCH.png" width=1400 height=350>
 </p>
- 
+ </details>
