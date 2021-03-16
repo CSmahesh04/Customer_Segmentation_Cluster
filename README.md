@@ -127,7 +127,7 @@ Next I use my favourite function in **Seaborn**, the _pairplot_ function. This p
 <summary>Show/Hide</summary>
 <br>
  
-KMeans clustering is one of the best clustering algorithms around. It uses the euclidean distances between the data points among the feature space to cluster data points accordingly. The only hyperparameter to set is the number of cluster parameters. This can be found by running a for loop to get the score of each cluster group and using the elbow method to determine the optimal number clusters. Below we can see that the elbow isn't very clear, but around cluster 5 seems to be where it is.
+K-Means clustering is one of the best clustering algorithms around. It uses the euclidean distances between the data points among the feature space to cluster data points accordingly. The only hyperparameter to set is the number of cluster parameters. This can be found by running a for loop to get the score of each cluster group and using the elbow method to determine the optimal number clusters. Below we can see that the elbow isn't very clear, but around cluster 5 seems to be where it is.
 
 <h5 align="center">Elbow Plot of K Means</h5>
 <p align="center">
