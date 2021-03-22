@@ -1,4 +1,4 @@
- <h1 align='center'>CUSTOMER SEGMENTATION USING CLUSTERING</h1> 
+ <h1 align='center'>CUSTOMER SEGMENTATION USIG CLUSTERING</h1> 
 
 AI is a hugely important and lucrative endeavour in commerce, helping businesses in optimising products, planning inventory and logistics, along with more technical aspects such as Computer Vision, Natural Language Processing and Recommendation Systems. A lesser known use of AI is its use in Marketing. AI is often used in marketing efforts where speed is essential. AI tools use data and customer profiles to learn how to best communicate with customers, then serve them tailored messages at the right time without intervention from marketing team members, ensuring maximum efficiency. In this project I will apply traditional ML techniques along with DL networks to segment customers of a business so that they can easily advertise to those particular groups of customers. 
 
