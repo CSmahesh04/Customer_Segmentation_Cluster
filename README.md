@@ -67,7 +67,7 @@ Since there are more than 50% of the values missing in the columns Addressline2 
   <img src="https://github.com/CSmahesh04/Customer_Segmentation_Cluster/blob/main/Images/bar4.png" width=900 height=550>
 </p>
 
- All the above columns are categorical variables. We need to replace the string values with one hot encoded values. Do achieve this I utilized the _get_dummies_ module in **Pandas**. This increased the total number of columns from 9 to 39. The **PRODUCTCODE** column has 109 unique values, so using the same method will give an additional 108 columns which is bad, we need to avoid the curse of dimensionality. Below is the dataset after converting columns into dummies:
+ All the above columns are categorical variables. We need to replace the string values with one hot encoded values. To achieve this I utilized the _get_dummies_ module in **Pandas**. This increased the total number of columns from 9 to 39. The **PRODUCTCODE** column has 109 unique values, so using the same method will give an additional 108 columns which is bad, we need to avoid the curse of dimensionality. Below is the dataset after converting columns into dummies:
  
  <h5 align="center">Dataset with Dummified Features</h5>
 <p align="center">
